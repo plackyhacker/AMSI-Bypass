@@ -1,6 +1,8 @@
 # Anti-malware scanning interface (AMSI) Patching
 Another AMSI bypass, this one is written in C.
 
+![Demo Video](https://github.com/plackyhacker/amsi-bypass/blob/main/demo.gif "Demo")
+
 **Compilation**
 
 ```
