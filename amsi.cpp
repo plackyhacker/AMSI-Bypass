@@ -4,7 +4,7 @@ void PatchAmsiScanBuffer();
 
 BOOL WINAPI DllMain(HINSTANCE hinst, DWORD dwReason, LPVOID reserved) {
 
-    switch (dwReason)  {
+	switch (dwReason)  {
 		case DLL_PROCESS_ATTACH:
 			PatchAmsiScanBuffer();
 			break;
@@ -16,11 +16,10 @@ BOOL WINAPI DllMain(HINSTANCE hinst, DWORD dwReason, LPVOID reserved) {
 			break;
 			
 		case DLL_PROCESS_DETACH:
-			
 			break;
 	}
 	
-    return TRUE;
+	return TRUE;
 }
 
 void PatchAmsiScanBuffer()
